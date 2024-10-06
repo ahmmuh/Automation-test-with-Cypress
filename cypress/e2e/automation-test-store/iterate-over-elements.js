@@ -2,6 +2,10 @@
 /// <reference types="@cypress/xpath" />
 
 describe("Iterate Over Elements", () => {
+  beforeEach(() => {
+    cy.visit("https://automationteststore.com/");
+    cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
+  });
   //   it.only("Log Out informatio about all hair care product", () => {
   //     cy.visit("https://automationteststore.com/")
   //       .get("a[href*='product/category&path=']")
@@ -14,13 +18,14 @@ describe("Iterate Over Elements", () => {
   //   })
 
   it("Add specific product to basket", () => {
-    cy.visit("https://automationteststore.com/")
-    cy.get("a[href*='product/category&path=']").contains("Hair Care").click()
+    cy.selectProduct("Curls to straight Shampoo");
+  });
 
-    cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
-      if ($el.text().includes("Curls to straight Shampoo")) {
-        cy.wrap($el).click()
-      }
-    })
-  })
-})
+  it("Add specific product to basket", () => {
+    cy.selectProduct("Seaweed Conditioner");
+  });
+
+  it("Add specific product to basket", () => {
+    cy.selectProduct("Eau Parfumee au The Vert Shampoo");
+  });
+});
