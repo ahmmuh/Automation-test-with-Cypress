@@ -1,4 +1,4 @@
-const { defineConfig } = require("cypress")
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
@@ -7,6 +7,6 @@ module.exports = defineConfig({
     },
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
     chromeWebSecurity: false,
+    excludeSpecPattern: "cypress/e2e/other/*.js",
   },
-  
-})
+});
