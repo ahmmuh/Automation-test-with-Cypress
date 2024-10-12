@@ -10,6 +10,7 @@ module.exports = defineConfig({
     baseUrl: "https://www.webdriveruniversity.com",
     env: {
       first_name: "Sarah",
+      webdriveruni_homePage: "https://www.webdriveruniversity.com",
     },
   },
 });

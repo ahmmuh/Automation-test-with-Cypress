@@ -28,6 +28,13 @@ Cypress.Commands.add("selectProduct", (productName) => {
   });
 });
 
+Cypress.Commands.add("navigateTo_webdriveruni_homePage", () => {
+  cy.visit("/");
+});
+
+Cypress.Commands.add("navigateTo_webdriveruni_checkboxes_page", () => {
+  cy.visit("/" + "/Dropdown-Checkboxes-RadioButtons/index.html");
+});
 Cypress.Commands.add("addProductToBasket", (productName) => {
   cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
     if ($el.text() === productName) {
@@ -35,7 +42,6 @@ Cypress.Commands.add("addProductToBasket", (productName) => {
       cy.get(".productcart").eq(index).click();
     }
   });
-
 });
 
 Cypress.Commands.add(

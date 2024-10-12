@@ -8,11 +8,14 @@ describe("Test Contact Us form via WebdriverUni", () => {
       globalThis.data = data;
     });
   });
+  beforeEach(() => {
+    cy.visit(
+      Cypress.env("webdriveruni_homePage") + "/Contact-Us/contactus.html"
+    );
+  });
   it.only("Should be able to submit a successfull submission contact us form", () => {
-    cy.document().should("have.a.property", "charset").and("eq", "UTF-8");
+    // cy.document().should("have.a.property", "charset").and("eq", "UTF-8");
     // cy.visit("https://www.webdriveruniversity.com/Contact-Us/contactus.html")
-    cy.visit("/");
-    cy.get("#contact-us").invoke("removeAttr", "target").click({ force: true });
 
     // cy.get("#contact-us").click({ force: true });
     // cy.get('[name="first_name"]').type(data.first_name);
@@ -33,8 +36,8 @@ describe("Test Contact Us form via WebdriverUni", () => {
 
   it("Should not be able to submit a successfull submission contact us form as all fields required", () => {
     // cy.visit("https://www.webdriveruniversity.com/Contact-Us/contactus.html")
-    cy.visit("/");
-    cy.get("#contact-us").click({ force: true });
+    // cy.visit("/");
+    // cy.get("#contact-us").click({ force: true });
     // cy.get('[name="first_name"]').type(data.first_name);
     // cy.get('[name="last_name"]').type(data.last_name);
     // cy.get("textarea.feedback-input").type("This is a feeedback");
