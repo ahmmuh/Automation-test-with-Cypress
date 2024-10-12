@@ -1,5 +1,7 @@
 /// <reference types="Cypress" />
 
+// const cypress = require("cypress");
+
 describe("Test Contact Us form via WebdriverUni", () => {
   before(() => {
     cy.fixture("example").then((data) => {
@@ -9,7 +11,7 @@ describe("Test Contact Us form via WebdriverUni", () => {
   it.only("Should be able to submit a successfull submission contact us form", () => {
     cy.document().should("have.a.property", "charset").and("eq", "UTF-8");
     // cy.visit("https://www.webdriveruniversity.com/Contact-Us/contactus.html")
-    cy.visit("https://www.webdriveruniversity.com");
+    cy.visit("/");
     cy.get("#contact-us").invoke("removeAttr", "target").click({ force: true });
 
     // cy.get("#contact-us").click({ force: true });
@@ -20,18 +22,18 @@ describe("Test Contact Us form via WebdriverUni", () => {
     // cy.get('[type="submit"]').click();
 
     cy.webdriveruni_contactForm_Submission(
-      data.first_name,
+      Cypress.env("first_name"),
       data.last_name,
       data.email,
       "How can i learn it?",
       "h1",
-      "Than You For Your Message!"
+      "Thank You for your Message!"
     );
   });
 
   it("Should not be able to submit a successfull submission contact us form as all fields required", () => {
     // cy.visit("https://www.webdriveruniversity.com/Contact-Us/contactus.html")
-    cy.visit("https://www.webdriveruniversity.com");
+    cy.visit("/");
     cy.get("#contact-us").click({ force: true });
     // cy.get('[name="first_name"]').type(data.first_name);
     // cy.get('[name="last_name"]').type(data.last_name);
