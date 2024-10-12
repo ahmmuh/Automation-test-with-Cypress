@@ -1,19 +1,26 @@
 /// <reference types="Cypress" />
 
 // const cypress = require("cypress");
-
+import HomePage_OP from "../../support/pageObjects/webdriveruni/HomePage_OP";
+import Contact_Us_PO from "../../support/pageObjects/webdriveruni/Contact_us_PO";
 describe("Test Contact Us form via WebdriverUni", () => {
+  //custom classes with logic
+  const home_page = new HomePage_OP();
+  const contactForm = new Contact_Us_PO();
+
   before(() => {
     cy.fixture("example").then((data) => {
       globalThis.data = data;
     });
   });
   beforeEach(() => {
-    cy.visit(
-      Cypress.env("webdriveruni_homePage") + "/Contact-Us/contactus.html"
-    );
+    home_page.visitHomePage();
+    home_page.click_contactUs_button();
+    // cy.visit(
+    //   Cypress.env("webdriveruni_homePage") + "/Contact-Us/contactus.html"
+    // );
   });
-  it.only("Should be able to submit a successfull submission contact us form", () => {
+  it("Should be able to submit a successfull submission contact us form", () => {
     // cy.document().should("have.a.property", "charset").and("eq", "UTF-8");
     // cy.visit("https://www.webdriveruniversity.com/Contact-Us/contactus.html")
 
@@ -24,7 +31,16 @@ describe("Test Contact Us form via WebdriverUni", () => {
     // cy.get("textarea.feedback-input").type("This is a feeedback");
     // cy.get('[type="submit"]').click();
 
-    cy.webdriveruni_contactForm_Submission(
+    // cy.webdriveruni_contactForm_Submission(
+    //   Cypress.env("first_name"),
+    //   data.last_name,
+    //   data.email,
+    //   "How can i learn it?",
+    //   "h1",
+    //   "Thank You for your Message!"
+    // );
+
+    contactForm.contactForm_submission(
       Cypress.env("first_name"),
       data.last_name,
       data.email,
@@ -43,11 +59,9 @@ describe("Test Contact Us form via WebdriverUni", () => {
     // cy.get("textarea.feedback-input").type("This is a feeedback");
     // cy.get('[type="submit"]').click();
     // cy.get("body").contains("Error: all fields are required");
-
-    cy.webdriveruni_contactForm_Submission(
+    contactForm.contactForm_submission(
       data.first_name,
       data.last_name,
-      data.email,
       " ",
       "How can i learn it?",
       "body",
