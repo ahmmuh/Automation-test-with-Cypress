@@ -10,6 +10,7 @@ describe("Test Contact Us form via WebdriverUni", () => {
   const contactForm = new Contact_Us_PO();
 
   before(() => {
+    // cy.viewport(550, 750);
     cy.fixture("example").then((data) => {
       globalThis.data = data;
     });
@@ -49,7 +50,7 @@ describe("Test Contact Us form via WebdriverUni", () => {
       data.email,
       "How can i learn it?",
       "h1",
-      "Thank You for your Message!"
+      "Thank You for your Message!555"
     );
   });
 

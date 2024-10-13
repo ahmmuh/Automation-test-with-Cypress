@@ -8,6 +8,11 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
     chromeWebSecurity: false,
     pageLoadTimeout: 120000,
+    screenshotOnRunFailure: true,
+    trashAssetsBeforeRuns: true,
+    video: false,
+    viewportHeight: 550,
+    viewportWidth: 750,
     baseUrl: "https://www.webdriveruniversity.com",
     env: {
       first_name: "Sarah",
