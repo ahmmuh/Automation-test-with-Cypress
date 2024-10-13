@@ -4,6 +4,7 @@
 import HomePage_OP from "../../support/pageObjects/webdriveruni/HomePage_OP";
 import Contact_Us_PO from "../../support/pageObjects/webdriveruni/Contact_us_PO";
 describe("Test Contact Us form via WebdriverUni", () => {
+  Cypress.config("defaultCommandTimeout", 20000);
   //custom classes with logic
   const home_page = new HomePage_OP();
   const contactForm = new Contact_Us_PO();
@@ -14,8 +15,10 @@ describe("Test Contact Us form via WebdriverUni", () => {
     });
   });
   beforeEach(() => {
+    cy.wait(3000);
     home_page.visitHomePage();
     home_page.click_contactUs_button();
+    // cy.pause();
     // cy.visit(
     //   Cypress.env("webdriveruni_homePage") + "/Contact-Us/contactus.html"
     // );
