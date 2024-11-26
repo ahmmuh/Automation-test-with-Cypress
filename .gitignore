@@ -1,1 +1,6 @@
 /node_modules
+results
+videos
+mochawesome-report
+screenshots
+package-lock.json
